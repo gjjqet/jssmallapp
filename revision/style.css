@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+.title{
+    background-color: gray;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.title.active{
+    background-color: steelblue;
+}
+
+.content{
+    height:0;
+    background-color: #f4f4f4;
+    text-indent: 20px;
+    line-height: 30px;
+    text-align: justify;
+    padding: 0 20px;
+
+   
+
+    overflow: hidden;
+}
+
+.title::after{
+    content: "close";
+
+    position: absolute;
+    right: 20px;
+}
+
+.title.active::after{
+    content: "open";
+}
+
+.title:hover{
+    background-color: steelblue;
+}
