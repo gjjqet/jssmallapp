@@ -1,31 +1,51 @@
 //Get UI
-const gettitle = document.querySelectorAll(".title");
-// console.log(gettitle)
+const getitems = document.getElementsByClassName("carousel-items");
+const getdots = document.querySelectorAll(".dot");
+// console.log(getitems);
+// console.log(getdots);
 
-gettitle.forEach(onetitle => {
-    // console.log(onetitle)
+let currslide = 0;
 
-    onetitle.addEventListener("click",function(e){
-        // console.log(e.target)
+document.getElementById("prev").addEventListener("click",function(){
+   carousel(currslide -= 1)
+})
 
-       e.target.classList.toggle("active");
+document.getElementById("next").addEventListener("click",function(){
+    carousel(currslide +=1 )
+})
 
-       const getparagraph = e.target.nextElementSibling;
-    //    console.log(getparagraph)
-      
-       if(onetitle.classList.contains("active")){
-        getparagraph.style.height = getparagraph.scrollHeight + "px";
-       }else{
-        getparagraph.style.height = "0px";
-       }
 
-    })
+function carousel(slide){
 
-    const getparagraph = onetitle.nextElementSibling;
-
-    if(onetitle.classList.contains("active")){
-        getparagraph.style.height = getparagraph.scrollHeight + "px";
+    for(let x=0 ; x<getitems.length ; x++){
+        getitems[x].style.display = "none";
     }
 
-});
+    for(let y=0 ; y < getdots.length ;y++){
+        getdots[y].classList.remove("active");
+    }
+
+    if(slide < 0){
+        currslide = getitems.length -1;
+    }else if(slide > getitems.length - 1){
+        currslide = 0
+    }
+
+    getitems[currslide].style.display = "block";
+
+    getdots[currslide].classList.add("active")
+
+}
+
+
+for(let y=0 ; y < getdots.length ; y++){
+
+    getdots[y].addEventListener("click",function(){
+        currslide = this.getAttribute("data-bs-slide-to");
+        carousel(currslide);
+    })
+
+}
+
+carousel(currslide)
 

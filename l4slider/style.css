@@ -8,79 +8,88 @@ body{
 
     display: grid;
     place-items: center;
-    user-select: none;
 }
 
 .container{
     width: 900px;
-    background-color: #f4f4f4;
 }
 
 .carousel{
+
     position: relative;
+
 }
 
 .carousel-indicators{
+
     width: 100%;
     /* background-color: steelblue; */
     list-style: none;
     text-align: center;
 
     position: absolute;
-    bottom: 0;   
-    
-    cursor: pointer;
-   
+    left: 50%;
+    bottom: 0;
+
+    transform: translate(-50%);
+
 }
 
-.carousel-indicators .dot{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #bbb;
-    margin: 0px 10px;
-
-    display: inline-block;
+.carousel-inner{
+    background-color: #f4f4f4;
 }
 
-.carousel-indicators .dot:hover,.carousel-indicators .dot.active{
-    background-color: black;
-}
-
-.carousel-items{
+.carousel-item{
     text-align: center;
-    padding: 50px 0px;
+    padding: 100px;
+
+    /* display: none; */
 }
 
-.carousel-inner .carousel-items img{
-    width: 200px;
-    height: 200px;
+.carousel-item .user{
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
-.carousel-items h2{
+.carousel-item .jobtitle{
     letter-spacing: 2px;
 }
 
-.carousel-items .contact-btn{
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 15px;
-    border: none;
+.carousel-item .contact-btn{
     background-color: steelblue;
     color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.carousel-indicators .dot{
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+
+    display: inline-block;
+
+    cursor: pointer;
+    margin: 0px 3px;
+}
+
+.carousel-indicators .dot:hover,.carousel-indicators .dot.active{
+    background-color: #888;
 }
 
 .carousel-control-prev,.carousel-control-next{
-    padding: 10px;
-    font-size: 30px;
-    cursor: pointer;
     /* background-color: steelblue; */
-    color:green;
+    font-size: 25px;
+
     position: absolute;
     top: 50%;
 
     transform: translateY(-50%);
+
+    padding: 20px;
 }
 
 .carousel-control-prev{
@@ -92,43 +101,46 @@ body{
 }
 
 .carousel-control-prev:hover{
+    color: #888;
 
-    animation-name: forprev;
+    animation-name: fromleft;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-
 }
 
 .carousel-control-next:hover{
+    color: #888;
 
-    animation-name: fornext;
+    animation-name: fromright;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-
 }
 
-@keyframes forprev {
+
+@keyframes fromleft {
     from{
+
         left: 0;
         opacity: 0.5;
+
     }
     to{
-        left: 10px;
+        left:10px;
         opacity: 1;
-        color: red;
     }
 }
 
-@keyframes fornext {
+@keyframes fromright {
     from{
+
         right: 0;
         opacity: 0.5;
+
     }
     to{
-        right: 10px;
+        right:10px;
         opacity: 1;
-        color: red;
     }
 }
