@@ -13,7 +13,9 @@ const getlis = getul.getElementsByTagName("li");
 // console.log(getlis[0]);
 
 getsortazm1btn.addEventListener("click",sortingazm1);
-getsortzam1btn.addEventListener("click",sortingzam1)
+getsortzam1btn.addEventListener("click",sortingzam1);
+
+getsortazm2btn.addEventListener("click",sortingazm2);
 
 getinput.addEventListener("keyup",filter);
 
@@ -128,5 +130,49 @@ function sortingzam1(){
         getul.appendChild(newli);
 
     })
+
+}
+
+
+// Method 2
+
+function sortingazm2(){
+    console.log("method 2 AZ");
+
+    let shouldswitch = true;
+    let switching = true;
+
+    // console.log(getlis.length);// 35 
+
+    while(switching){
+        switching = false;
+
+        let i;
+
+        for(i=0 ; i < getlis.length - 1 ; i++){
+            // console.log(i); // 0 to 34 // after-1 = 0 to 33 
+
+            shouldswitch = false;
+
+            // 0=Ag Ag  > 1 = Mg Mg 
+
+            if(getlis[i].textContent.toLocaleLowerCase() > getlis[i+1].textContent.toLocaleLowerCase()){
+                shouldswitch = true;
+                break;
+            }
+        }
+
+        // console.log(i);//34
+
+        if(shouldswitch){
+            //parent.insertBefore(new,existing)
+
+            getlis[i].parentElement.insertBefore(getlis[i+1],getlis[i]);
+
+            switching = true;
+
+        }
+
+    }
 
 }
